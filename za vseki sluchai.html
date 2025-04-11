@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" href="fav.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<script type="text/javascript">
+                var msg  = document.title ="Честита годишнина слънчице!";
+                var speed = 150;
+                var endChar = " ";
+                var pos = 0;
+                
+                function moveTitle()
+                {
+                     var ml = msg.length;
+                        
+                    title = msg.substr(pos,ml) + endChar + msg.substr(0,pos);
+                  document.title = title;
+                    
+                  pos++;
+                  if (pos > ml) pos=0;
+                  window.setTimeout("moveTitle()",speed);
+                }
+            
+                moveTitle();
+            </script>
+<link rel="stylesheet" href="styles.css">
+<body onload="startTime()">
+<div id="txt"></div>
+<body>
+    <link rel="stylesheet" href="stail.css">
+  <script  src="script.js"></script>
+<div class="background-wrap">
+</div>
+<div class="content">
+<h1>Честита годишнина, мило мое слънчице!</h1> 
+<p>\/ПРЕДИ ДА ОТВОРИШ БАГАЖНИКА И ДА ОТКРИЕШ СВОИТЕ ПОДАРЪЦИ ПРОЧЕТИ\/</p>
+<b></b><p><a href="" target="blank_" style="color: #dd6bb7">МНОГО ТЕ ОБИЧКАМ ЩАСТИЕ МОЕ!!!</a></p></b>
+<b></b><p><a href="" target="blank_" style="color: #dd6bb7">ТИ ВИНАГИ СИ БИЛА И ЩЕ БЪДЕШ ВСИЧКО ЗА МЕН!</a></p></b>
+<b></b><p><a href="" target="blank_" style="color: #dd6bb7">БЛАГОДАРЯ ТИ БЕЗКРАЙНО МНОГО ЗА ВСИЧКИ ХУБАВИ МОМЕНТИ, КОИТО СМЕ ИМАЛИ ЗАЕДНО!</a></p></b>
+<b></b><p><a href="" target="blank_" style="color: #dd6bb7">БЛАГОДАРЯ ТИ ЗА ВСИЧКО, С КОЕТО СИ МИ ПОМОГНАЛА ЗА ВРЕМЕТО В КОЕТО СМЕ ЗАЕДНО!</a></p></b>
+<b></b><p><a href="" target="blank_" style="color: #dd6bb7">НАИСТИНА ОЦЕНЯВАМ ВСЕКИ ЕДИН МОМЕНТ С ТЕБ, ЗАЩОТО ВСИЧКО СВЪРЗАНО С ТЕБ Е ПРЕКРАСНО, КАКТО И ТИ САМАТА!</a></p></b>
+<b></b><p><a href="" target="blank_" style="color: #dd6bb7">НЕ МИСЛЯ, ЧЕ НЯКОГА СА СЪЗДАВАНИ ДУМИ, С КОИТО ДА МОГА ДА ОПИША КОЛКО МНОГО ТЕ ОБИЧАМ И КАК ТОЧНО СЕ ЧУВСТВАМ!</a></p></b>
+<b></b><p><a href="" target="blank_" style="color: #dd6bb7">ТИ НАПРАВИ МОЯТ ЖИВОТ ДА ИМА СМИСЪЛ!</a></p></b>
+<b></b><p><a href="" target="blank_" style="color: #dd6bb7">БЛАГОДАРЕНИЕ НА ТЕБ СЕГА ИМАМ СИЛИТЕ ДА СЪЩЕСТВУВАМ И ДА СЕ ЗАНИМАВАМ С НЕЩА, КАТО</a></p></b>
+<b></b><p><a href="" target="blank_" style="color: #dd6bb7">ТОЧНО ТОВА, КОЕТО ЧЕТЕШ В МОМЕНТА!</a></p></b>
+<b></b><p><a href="" target="blank_" style="color: #dd6bb7">НАДЯВАМ СЕ ПОДАРЪЦИТЕ ДА ТИ ХАРЕСАТ!!!</a></p></b>
+<b></b><p><a href="" target="blank_" style="color: #dd6bb7">ПОЖЕЛАВАМ СИ ДЪЛЪГ ЖИВОТ, ИЗПЪЛНЕН С ТВОЯТА ЛЮБОВ, КАКТО И НА ТЕБ ДЪЛЪГ ЖИВОТ ИЗПЪЛНЕН С МОЯТА!</a></p></b>
+<b><p><a href="" target="blank_" style="color: #dd6bb7">СЕГА ЗАПОВЯДАЙ С МЕН КЪМ БАГАЖНИКА НА ЗВЯРА, ЗА ДА СИ ВИДИШ ПОДАРЪЦИТЕ!</a></p></b>
+</div>
+<script language="JavaScript">
+            var vid = document.getElementById("video-bg-elem");
+            vid.volume = 0.1;
+  window.onload = function() {
+    document.addEventListener("contextmenu", function(e){
+      e.preventDefault();
+    }, false);
+    document.addEventListener("keydown", function(e) {
+    //document.onkeydown = function(e) {
+      // "I" key
+      if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+        disabledEvent(e);
+      }
+      // "J" key
+      if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+        disabledEvent(e);
+      }
+      // "S" key + macOS
+      if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+        disabledEvent(e);
+      }
+      // "U" key
+      if (e.ctrlKey && e.keyCode == 85) {
+        disabledEvent(e);
+      }
+      // "F12" key
+      if (event.keyCode == 123) {
+        disabledEvent(e);
+      }
+    }, false);
+    function disabledEvent(e){
+      if (e.stopPropagation){
+        e.stopPropagation();
+      } else if (window.event){
+        window.event.cancelBubble = true;
+      }
+      e.preventDefault();
+      return false;
+    }
+  };
+</script>
+</body>
+
+</html>
