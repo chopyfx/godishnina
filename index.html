@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>Честита годишнина, мило мое слънчице!</title>
+  <style>
+    /* Base Styles */
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: url("https://img.freepik.com/free-photo/view-flowers-through-condensed-glass_23-2149478668.jpg?t=st=1744936261~exp=1744939861~hmac=2661cadd96e4a8ada7c9aeb1474e4c10146363ac0f921a8ec21b65a62425f431&w=740") no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Floating Hearts */
+    .floating-hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .heart {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 6s infinite ease-in;
+      opacity: 0.7;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -7.5px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -7.5px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(45deg); opacity: 0.7; }
+      100% { transform: translateY(-100vh) rotate(45deg); opacity: 0; }
+    }
+
+    /* Intro Screen */
+    #intro {
+      position: fixed;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6); /* Darkened overlay */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      opacity: 1;
+      transition: opacity 1s ease;
+      padding: 20px;
+    }
+
+    #intro.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #intro h1 {
+      font-size: 1.7em;
+      margin-bottom: 20px;
+      color: pink;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    }
+
+    .big-heart {
+      font-size: 5em;
+      cursor: pointer;
+      animation: pulse 1.5s infinite;
+      user-select: none;
+      transition: transform 0.6s ease, opacity 0.6s ease;
+      color: #e5a4b9; /* Soft pink */
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for better visibility */
+    }
+
+    .big-heart.clicked {
+      animation: none;
+      transform: scale(20);
+      opacity: 0;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    /* Main Content */
+    #main-content {
+      display: none;
+      opacity: 0;
+      transition: opacity 1s ease;
+      z-index: 0;
+    }
+
+    #main-content.visible {
+      display: block;
+      opacity: 1;
+    }
+
+    .overlay {
+      background: rgba(255, 192, 203, 0.); /* Soft pink overlay */
+      min-height: 100vh;
+      padding-bottom: 50px;
+      padding-top: env(safe-area-inset-top);
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 15px;
+      font-size: 2em;
+      font-weight: bold;
+      color: #e5a4b9; /* Soft pink */
+      text-shadow: 5px 5px 10px rgb(0, 0, 0); /* Adding shadow for readability */
+    }
+
+    .content {
+      padding: 20px 15px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .content p {
+      font-size: 1.1em;
+      margin-bottom: 15px;
+      line-height: 1.6;
+      word-break: break-word;
+      color: #e5a4b9; /* Soft pink */
+      text-shadow: 2px 2px 5px rgb(0, 0, 0); /* Soft shadow for better visibility */
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+    }
+
+    /* Mobile Adjustments */
+    @media (max-width: 480px) {
+      header {
+        font-size: 1.5em;
+        padding: 30px 10px;
+      }
+
+      #intro h1 {
+        font-size: 1.3em;
+      }
+
+      .big-heart {
+        font-size: 4em;
+      }
+
+      .content p {
+        font-size: 1em;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 8px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="floating-hearts" id="hearts-container"></div>
+
+  <div id="intro">
+    <h1>ОБИЧАМ ТЕ! Натисни сърцето, моля!</h1>
+    <div class="big-heart" onclick="showMain()">💖</div>
+  </div>
+
+  <div id="main-content">
+    <div class="overlay">
+      <header>Честита годишнина, мило мое слънчице! 💖</header>
+      <div class="content">
+        <p>МНОГО ТЕ ОБИЧКАМ ЩАСТИЕ МОЕ!!!</p>
+        <p>ТИ ВИНАГИ СИ БИЛА И ЩЕ БЪДЕШ ВСИЧКО ЗА МЕН!</p>
+        <p>БЛАГОДАРЯ ТИ БЕЗКРАЙНО МНОГО ЗА ВСИЧКИ ХУБАВИ МОМЕНТИ, КОИТО СМЕ ИМАЛИ ЗАЕДНО!</p>
+        <p>БЛАГОДАРЯ ТИ ЗА ВСИЧКО, С КОЕТО СИ МИ ПОМОГНАЛА ЗА ВРЕМЕТО В КОЕТО СМЕ ЗАЕДНО!</p>
+        <p>НАИСТИНА ОЦЕНЯВАМ ВСЕКИ ЕДИН МОМЕНТ С ТЕБ, ЗАЩОТО ВСИЧКО СВЪРЗАНО С ТЕБ Е ПРЕКРАСНО, КАКТО И ТИ САМАТА!</p>
+        <p>НЕ МИСЛЯ, ЧЕ НЯКОГА СА СЪЗДАВАНИ ДУМИ, С КОИТО ДА МОГА ДА ОПИША КОЛКО МНОГО ТЕ ОБИЧАМ И КАК ТОЧНО СЕ ЧУВСТВАМ!</p>
+        <p>ТИ ДАДЕ СМИСЪЛ НА ЖИВОТА МИ!</p>
+        <p>БЛАГОДАРЕНИЕ НА ТЕБ СЕГА ИМАМ СИЛИТЕ ДА СЕ ЧУВСТВАМ ЖИВ И ДА СЕДНА, ЗА ДА НАПРАВЯ ТОЛКОВА СПЕЦИАЛНА ИЗНЕНАДА ЗА ЕДИН МНОГО СПЕЦИАЛЕН ЗА МЕН ЧОВЕК!</p>
+        <p>ИСКАМ ДА ЗНАЕШ, ЧЕ КОЛКОТО И ДА СЕ ОПИТВАТ ДА НИ ПОПРЕЧАТ, НЯМА ДА УСПЕЯТ, ЗАЩОТО НЯМА НИЩО ПО-СИЛНО ОТ ИСТИНСКАТА ЛЮБОВЗ!</p>
+        <p>НАДЯВАМ СЕ ПОДАРЪЦИТЕ ДА ТИ ХАРЕСАТ!!!</p>
+        <p>ПОЖЕЛАВАМ СИ ДЪЛЪГ ЖИВОТ, ИЗПЪЛНЕН С ТВОЯТА ЛЮБОВ, КАКТО И НА ТЕБ ДЪЛЪГ ЖИВОТ ИЗПЪЛНЕН С МОЯТА!</p>
+        <p>СЕГА ЗАПОВЯДАЙ С МЕН КЪМ БАГАЖНИКА НА ЗВЯРА, ЗА ДА СИ ВИДИШ ПОДАРЪЦИТЕ!</p>
+      </div>
+
+      <div class="gallery">
+        <img src="img/1.JPEG" alt="Photo 1" />
+        <img src="img/2.JPEG" alt="Photo 2" />
+        <img src="img/3.JPEG" alt="Photo 3" />
+        <img src="img/4.JPEG" alt="Photo 4" />
+        <img src="img/5.JPEG" alt="Photo 5" />
+        <img src="img/6.JPEG" alt="Photo 6" />
+        <img src="img/7.JPEG" alt="Photo 7" />
+        <img src="img/8.JPEG" alt="Photo 8" />
+        <img src="img/9.JPEG" alt="Photo 9" />
+        <img src="img/10.JPEG" alt="Photo 10" />
+        <img src="img/11.JPEG" alt="Photo 11" />
+        <img src="img/12.JPEG" alt="Photo 12" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showMain() {
+      const intro = document.getElementById('intro');
+      const main = document.getElementById('main-content');
+      const heart = document.querySelector('.big-heart');
+
+      heart.classList.add('clicked');
+      intro.classList.add('fade-out');
+      
+      setTimeout(() => {
+        main.style.display = 'block';
+        main.classList.add('visible');
+      }, 1000);
+    }
+  </script>
+
+</body>
+</html>
